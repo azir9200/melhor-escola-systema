@@ -1,15 +1,17 @@
- import express, { Application, Request, Response } from "express";
- import cors from "cors";
- const app: Application = express();
+import express, { Application, Request, Response } from "express";
+import cors from "cors";
+import router from "./routes";
+const app: Application = express();
 
-
+//parsers
 app.use(express.json());
 app.use(cors());
 
-app.get("/", (req: Request, res: Response) => {  
+// application routes
+app.use("/api", router);
 
-  res.send('Hello world in Mondays !');
+app.get("/", (req: Request, res: Response) => {
+  res.send("Hello World!");
 });
-
 
 export default app;
